@@ -103,6 +103,20 @@ valgrind --tool=memcheck --leak-check=full --suppressions=../memcheck.suppress .
 
 * QT4 (LGPLv2)
 
+* Twitter Bootstrap (ApacheV2)
+
+* JQuery (MIT)
+
+* Datatable https://www.datatables.net (MIT) 
+
+* Blob.js https://github.com/eligrey/Blob.js (MIT)
+
+* FileSaver.js https://github.com/eligrey/FileSaver.js (MIT)
+
+* Base64.js Daniel Guerrero (BSD)
+
+* Clockpicker https://github.com/weareoutman/clockpicker (MIT)
+
 <h4>Specifications</h4>
 
 * OpenSSL is built with -DPURIFY option to avoid valgrind to complain about uninitialized data ("Conditional jump or move depends on uninitialised value(s)" warnings).
@@ -126,6 +140,10 @@ https://www.openssl.org/docs/faq.html#PROG14
 * User dashboard
 
 ![user dashboard](https://raw.github.com/akinaru/ssl-cert-dashboard/master/img/users.png)
+
+<h4>License</h4>
+
+[License MIT](https://github.com/akinaru/akinaru/ssl-cert-dashboard/blob/master/LICENSE.md)
 
 <hr/>
 
