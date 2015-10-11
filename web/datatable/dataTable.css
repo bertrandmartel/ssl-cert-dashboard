@@ -1,0 +1,61 @@
+.rowCount-grid
+{
+    float: right;
+    font-size: 15px;
+    color: Red;
+    padding-right: 250px;
+}
+
+tr:hover th, tr:hover td
+{
+    background-color: #ebebeb;
+    background-image: none;
+}
+#serviceList td
+{
+    height: 35px;
+    padding: 0px 0px 0px 20px !important;
+    text-align: left;
+    border-bottom: 1px solid #d0d0d0;
+    vertical-align: middle;
+    color: #555555;
+    background-color: #ffffff;
+}
+
+#sslCerts td
+{
+    height: 35px;
+    padding: 0px 0px 0px 20px !important;
+    text-align: left;
+    border-bottom: 1px solid #d0d0d0;
+    vertical-align: middle;
+    color: #555555;
+}
+
+ td.group
+{
+    background-color: #d5eafd !important;
+    border-bottom: 1px solid #94bafd;
+    border-top: 1px solid #94bafd;
+}
+ td.expanded-group
+{
+    background: url("img/minus.jpg") no-repeat scroll left center transparent;
+}
+ tr:hover td.expanded-group
+{
+    background: url("img/minus.jpg") no-repeat scroll left center #c0e1ff !important;
+}
+
+ td.collapsed-group
+{
+    background: url("img/plus.jpg") no-repeat scroll left center transparent;
+}
+ tr:hover td.collapsed-group
+{
+    background: url("img/plus.jpg") no-repeat scroll left center #c0e1ff !important;
+}
+.DataTables_sort_wrapper span
+{
+    float: right;
+}

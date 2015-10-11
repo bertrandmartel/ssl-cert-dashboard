@@ -1,0 +1,13 @@
+{
+	"port"           : 4343,
+	"ip"             : "127.0.0.1",
+	"useSSL"         : true,
+	"publicCert"     : "/home/abathur/Bureau/open_source/ssl-dashboard/certs/server/server.crt",
+	"privateCert"    : "/home/abathur/Bureau/open_source/ssl-dashboard/certs/server/server.key",
+	"caCerts"        : "/home/abathur/Bureau/open_source/ssl-dashboard/certs/ca.crt",
+	"privateKeyPass" : "12345",
+	"digestRealm"    : "akinaru_realm",
+	"webPath"        : "/home/abathur/Bureau/open_source/ssl-dashboard/web",
+	"keyFile"        : "/home/abathur/Bureau/open_source/ssl-dashboard/rand.txt",
+	"digestAlgo"     : "MD5"
+}

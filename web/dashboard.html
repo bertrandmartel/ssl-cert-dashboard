@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>SSL dashboard</title>
+
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+		<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css">
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+		<link rel="stylesheet" type="text/css" href="clockpicker/bootstrap-clockpicker.min.css">
+
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="datatable/dataTables.jqueryui.css">
+		<link rel="stylesheet" type="text/css" href="datatable/dataTable.css">
+		<link rel="stylesheet" type="text/css" href="datatable/datatable2.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+
+		<script type="text/javascript" src="js/dashboard.js"></script>
+		<script type="text/javascript" src="js/base64.js"></script>
+		<script type="text/javascript" src="js/Blob.js"></script>
+		<script type="text/javascript" src="js/FileSaver.js"></script>
+
+		<style type="text/css">
+
+			#generateCertDialog table tr {
+
+				border-bottom:1em solid white;
+
+			}
+
+			#generateCertFromCADialog table tr {
+
+				border-bottom:1em solid white;
+
+			}
+
+			.deleteCert {
+
+				border: none;
+				cursor:pointer;
+				overflow: hidden;
+				outline:none;
+				background-color: Transparent;
+				width:30px;
+				height: 20px;
+				background-image: url("img/delete.png");
+				background-repeat: no-repeat;
+				background-color: "white";
+
+			}
+		</style>
+
+	</head>
+
+		<body onload="init();" id="body" style="display:none;">
+
+		<div style="z-index: 10;position: absolute;right: 0;top: 0;margin:10px;">
+			<input onClick="logout();" type="button" value="logout" style='font-weight:bold;'/>
+		</div>
+		
+		<h2 class="form-signin-heading" style='margin: 0 auto;margin-top:50px;text-align:center;'><img src="img/logo.png"/></h2>
+		
+		<div class='ribbon' style='font-size:1.3em;'>
+			<a href='userboard'><span>Users</span></a>
+		</div>
+
+		<div id="deleteDialog">
+		</div>
+		<div id="downloadCertDialoo" style='font-size:medium;'>
+			<form action="">
+				<input type="checkbox" name="downloadedCert" id="publicKey" checked> public key<br/>
+				<input type="checkbox" name="downloadedCert" id="privateKey" checked> private key<br/>
+				<input type="checkbox" name="downloadedCert" id="pkcs12Key" checked> PKCS12 key
+			</form>
+		</div>
+		<div id="subMenu2">
+
+			<input type="button" value="Generate a new CA" onClick="initGenerateCa();"/>
+
+			<input style='margin:10px;' type="radio" name="cafilterType" value="caType" class="cafilterType" checked>&nbspCA serial filter
+		
+		</div>
+		<div id="generateCertDialog">
+			<form>
+				<table>
+					<tr style='border-top:1em solid white;'>
+						<td>start date</td>
+						<td><input type="text" id="caCertDatepicker1" style='width:100px;' tabindex="-1">&nbsp<input style='width:70px;' id="caCert-single-input" value="" placeholder="Now" ></td>
+					</tr>
+					<tr>
+						<td>end date</td>
+						<td><input  type="text" id="caCertDatepicker2" style='width:100px;'>&nbsp<input style='width:70px;' id="caCert-single-input2" value="" placeholder="Now"></td>
+					</tr>
+					<tr>
+						<td>common name</td>
+						<td><input  type="text" id="generateCaCommonName" value="CA-dashboard1"></td>
+					</tr>
+					<tr>
+						<td>country name</td>
+						<td><input  type="text" id="generateCaCountryName" value="FR"></td>
+					</tr>
+					<tr>
+						<td>province name</td>
+						<td><input  type="text" id="generateCaProvinceName" value="IDF"></td>
+					</tr>
+					<tr>
+						<td>locality name</td>
+						<td><input  type="text" id="generateCaLocalityName" value="Paris"></td>
+					</tr>
+					<tr>
+						<td>organization name</td>
+						<td><input  type="text" id="generateCaOrganizationName" value="GITHUB"></td>
+					</tr>
+					<tr>
+						<td>organizational unit name</td>
+						<td><input  type="text" id="generateCaOrganizationalUnitName" value="IT"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div id="generateCertFromCADialog">
+			<form>
+				<table>
+					<tr>
+						<td>start date</td>
+						<td><input type="text" id="CertDatepicker1" style='width:100px;' tabindex="-1">&nbsp<input style='width:70px;' id="Cert-single-input" value="" placeholder="Now" ></td>
+					</tr>
+					<tr>
+						<td>end date</td>
+						<td><input  type="text" id="CertDatepicker2" style='width:100px;'>&nbsp<input style='width:70px;' id="Cert-single-input2" value="" placeholder="Now"></td>
+					</tr>
+					<tr>
+						<td>common name</td>
+						<td><input  type="text" id="generateFromCaCommonName" value="dashboard-cert1"></td>
+					</tr>
+					<tr>
+						<td>country name</td>
+						<td><input  type="text" id="generateFromCaCountryName" value="FR"></td>
+					</tr>
+					<tr>
+						<td>province name</td>
+						<td><input  type="text" id="generateFromCaProvinceName" value="IDF"></td>
+					</tr>
+					<tr>
+						<td>locality name</td>
+						<td><input  type="text" id="generateFromCaLocalityName" value="Paris"></td>
+					</tr>
+					<tr>
+						<td>organization name</td>
+						<td><input  type="text" id="generateFromCaOrganizationName" value="GITHUB"></td>
+					</tr>
+					<tr>
+						<td>organizational unit name</td>
+						<td><input  type="text" id="generateFromCaOrganizationalUnitName" value="IT"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+		<div id="bodyConf">
+
+			<table id="sslCerts" class="fixed">
+				<thead>
+					<tr>
+						<th>Sign by</th>
+						<th>CA</th>
+						<th>Common name</th>
+						<th>Not before</th>
+						<th>Not after</th>
+						<th>Serial Number</th>
+						<th>Recording date</th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tfoot>
+					<tr>
+						<th>Sign by</th>
+						<th>CA</th>
+						<th>Common name</th>
+						<th>Not before</th>
+						<th>Not after</th>
+						<th>Serial Number</th>
+						<th>Recording date</th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+
+		<script type="text/javascript" language="javascript" src="datatable/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" language="javascript" src="datatable/dataTables.jqueryui.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="clockpicker/bootstrap-clockpicker.min.js"></script>
+		<script type="text/javascript" src="datatable/jquery.dataTables.rowGrouping.js"></script>
+
+		<script  type="text/javascript" language="javascript">
+
+			$(document).ready(function() {
+
+				$('#body').show();
+
+			});
+
+			$(function() {
+
+				$(".cafilterType").click(function() {
+
+				    if($('input[name="cafilterType"]:checked').val()=="caType")
+				    {
+				    	caFilterIndex=0;
+
+				    	reloadTable();
+				    }
+				    else if ($('input[name="cafilterType"]:checked').val()=="caSerial")
+				    {
+				    	caFilterIndex=10;
+
+				    	reloadTable();
+				    }
+				});
+
+				$( "#generateCertDialog" ).dialog({
+
+				  resizable: false,
+				  title:"Generate CA cert",
+				  height:500,
+				  width:500,
+				  autoOpen: false,
+				  modal: true,
+				  buttons: {
+
+				    "Confirm": function() {
+						generateCA();
+						$(this).dialog( "close" );
+				    },
+
+				    Cancel: function() {
+				      $( this ).dialog( "close" );
+
+				    }
+				  }
+				});
+
+				$( "#generateCertFromCADialog" ).dialog({
+
+				  resizable: false,
+				  title:"Are you sure to generate this certificate ?",
+				  height:500,
+				  width:500,
+				  autoOpen: false,
+				  modal: true,
+				  buttons: {
+
+				    "Confirm": function() {
+						generateFromCA(selectedSerial);
+						$(this).dialog( "close" );
+				    },
+
+				    Cancel: function() {
+				      $( this ).dialog( "close" );
+
+				    }
+				  }
+				});
+
+				$("#downloadCertDialoo").dialog({
+
+					resizable: false,
+					title:"Download certificates",
+					height:230,
+					width:350,
+					autoOpen: false,
+					modal: true,
+					buttons: {
+
+						"Download": function() {
+							downloadCert();
+							$( this ).dialog( "close" );
+						},
+
+						Cancel: function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
+
+				$( "#deleteDialog" ).dialog({
+
+				  resizable: false,
+				  title:"Are you sure to remove this cert ?",
+				  height:100,
+				  width:350,
+				  autoOpen: false,
+				  modal: true,
+				  buttons: {
+
+				    "Confirm": function() {
+
+						deleteCertBySerialNum(selectedSerial);
+						$( this ).dialog( "close" );
+				    },
+
+				    Cancel: function() {
+
+				      $( this ).dialog( "close" );
+
+				    }
+				  }
+				});
+			});
+			
+			var input = $('#caCert-single-input').clockpicker({
+				placement: 'bottom',
+				align: 'left',
+				autoclose: true,
+				'default': '7:00'
+			});
+			var input = $('#caCert-single-input2').clockpicker({
+				placement: 'bottom',
+				align: 'left',
+				autoclose: true,
+				'default': '23:00'
+			});
+
+			$(function() {
+				$( "#caCertDatepicker1" ).datepicker({
+					changeMonth: true,
+					changeYear: true
+				});
+				$( "#caCertDatepicker2" ).datepicker({
+					changeMonth: true,
+					changeYear: true
+				});
+			});
+			
+			var input = $('#Cert-single-input').clockpicker({
+				placement: 'bottom',
+				align: 'left',
+				autoclose: true,
+				'default': '7:00'
+			});
+			var input = $('#Cert-single-input2').clockpicker({
+				placement: 'bottom',
+				align: 'left',
+				autoclose: true,
+				'default': '23:00'
+			});
+
+			$(function() {
+				$( "#CertDatepicker1" ).datepicker({
+					changeMonth: true,
+					changeYear: true
+				});
+				$( "#CertDatepicker2" ).datepicker({
+					changeMonth: true,
+					changeYear: true
+				});
+			});
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SSL Dashboard</title>
+
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" href="css/login.css">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+		<script src="js/md5.js"></script>
+
+	</head>
+
+	<body id="login" onload="init();">
+
+		<div class="container">
+
+			<h2 class="form-signin-heading" style='margin: 0 auto;text-align:center;'><img src="img/logo.png"/></h2>
+
+			<form class="form-signin">
+
+				Username <input type="text"     class="input-block-level" id="user"      autocomplete="on" value="demo" >
+				Password <input type="password" class="input-block-level" id="password"  value="demo" >
+				<input id="logger" type='button' class="btn btn-large btn-primary" onCLick="login(); return false;" value="Connexion">
+
+			</form>
+
+			<div style='text-align:center'><span id="infoMessage"></span>
+			</div>
+
+		</div>
+
+		<script type="text/javascript">
+			$("#password").keyup(function(event){
+				if(event.keyCode == 13){
+					$("#logger").click();
+				}
+			});
+
+			$("#user").keyup(function(event){
+				if(event.keyCode == 13){
+					$("#logger").click();
+				}
+			});
+		</script>
+
+	</body>
+
+</html>
