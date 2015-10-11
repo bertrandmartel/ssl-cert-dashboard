@@ -5,30 +5,26 @@ Web dashboard of SSL certificates with QT4 non blocking http server / mongoDB ba
 
 ## Features
 
-<h4>SSL Dashboard</h4> 
+* SSL Dashboard
+  * creation of CA self signed certificate
+  * creation of signed certificate (from a CA cert)
+  * download public/private key + PKCS12 cert containing CA + key pair
+  * listing of all created certificates (with grouping according to Certificate Authority)
 
-* creation of CA self signed certificate
-* creation of signed certificate (from a CA cert)
-* download public/private key + PKCS12 cert containing CA + key pair
-* listing of all created certificates (with grouping according to Certificate Authority)
+* Authentication/Session
+  * digest authentication
+  * session persistence with cookie
 
-<h4>Authentication/Session</h4>
+* Back-end
+  * non blocking http server built with QT4 framework
+  * mongoDB client managing all database interactions
 
-* digest authentication
-* session persistence with cookie
-
-<h4>Back-end</h4>
-
-* non blocking http server built with QT4 framework
-* mongoDB client managing all database interactions
-
-<h4>Database encryption</h4>
-
-* XOR encryption for user password
+* Database encryption
+  *XOR encryption for user password
 
 <hr/>
 
-Server can be launched with a configuration file letting you to change ssl settings / XOR encryption key / digest algorithm used in authentication
+Server can be launched with a configuration file letting you change ssl settings / XOR encryption key / digest algorithm used in authentication
 
 <hr/>
 
