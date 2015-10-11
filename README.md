@@ -3,6 +3,7 @@
 
 Web dashboard of SSL certificates with QT4 non blocking http server / mongoDB back-end
 
+## Features
 
 <h4>SSL Dashboard</h4> 
 
@@ -31,12 +32,12 @@ Server can be launched with a configuration file letting you to change ssl setti
 
 <hr/>
 
-<h4>Prerequesites</h4>
+##Prerequesites
 
 * libboost-all-dev package installed
 * mongod package installed
 
-<h4>Build</h4>
+##Build
 
 ```
 cd ssl-dashboard
@@ -45,7 +46,7 @@ make
 
 ```
 
-<h4>Launch</h4>
+##Launch
 
 Edit to your liking file ``config.json``, here is default configuration :
 
@@ -78,7 +79,7 @@ Then in a browser :
 ![login](https://raw.github.com/akinaru/ssl-cert-dashboard/master/img/login.png)
 
 
-<h4>Memory checking</h4>
+##Memory checking
 
 Using valgrind :
 
@@ -87,7 +88,7 @@ valgrind --tool=memcheck --leak-check=full --suppressions=../memcheck.suppress .
 
 ```
 
-<h4>External libraries</h4>
+##External libraries
 
 * OpenSSL 1.0.1p (ApacheV1)
 
@@ -127,7 +128,7 @@ https://www.openssl.org/docs/faq.html#PROG14
 
 <hr/>
 
-<h4>Other views</h4>
+##Other views
 
 * SSL cert dashboard
 
@@ -141,7 +142,7 @@ https://www.openssl.org/docs/faq.html#PROG14
 
 ![user dashboard](https://raw.github.com/akinaru/ssl-cert-dashboard/master/img/users.png)
 
-<h4>License</h4>
+##License
 
 [License MIT](https://github.com/akinaru/akinaru/ssl-cert-dashboard/blob/master/LICENSE.md)
 
