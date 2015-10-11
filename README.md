@@ -140,7 +140,7 @@ https://www.openssl.org/docs/faq.html#PROG14
 
 ##License
 
-[License MIT](https://github.com/akinaru/akinaru/ssl-cert-dashboard/blob/master/LICENSE.md)
+[License MIT](https://github.com/akinaru/ssl-cert-dashboard/blob/master/LICENSE.md)
 
 <hr/>
 
