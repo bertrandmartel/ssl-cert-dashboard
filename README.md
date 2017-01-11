@@ -55,7 +55,7 @@ Edit to your liking file ``config.json``, here is default configuration :
     "privateCert"    : "~/ssl-dashboard/certs/server/server.key",
     "caCerts"        : "~/ssl-dashboard/certs/ca.crt",
     "privateKeyPass" : "12345",
-    "digestRealm"    : "akinaru_realm",
+    "digestRealm"    : "bertrandmartel_realm",
     "webPath"        : "/ssl-dashboard/web",
     "keyFile"        : "~/ssl-dashboard/rand.txt",
     "digestAlgo"     : "MD5"
@@ -72,7 +72,7 @@ cd ssl-dashboard/release
 Then in a browser :
 
 
-![login](https://raw.github.com/akinaru/ssl-cert-dashboard/master/img/login.png)
+![login](https://raw.github.com/bertrandmartel/ssl-cert-dashboard/master/img/login.png)
 
 
 ##Memory checking
@@ -90,11 +90,11 @@ valgrind --tool=memcheck --leak-check=full --suppressions=../memcheck.suppress .
 
 * MongoDB C++ connector (https://github.com/mongodb/mongo-cxx-driver) (ApacheV2)
 
-* SSL cert generator library https://github.com/akinaru/ssl-cert-generator-lib (MIT)
+* SSL cert generator library https://github.com/bertrandmartel/ssl-cert-generator-lib (MIT)
 
-* Digest authentication library https://github.com/akinaru/digest-auth-session-cpp (MIT)
+* Digest authentication library https://github.com/bertrandmartel/digest-auth-session-cpp (MIT)
 
-* Non blocking http server https://github.com/akinaru/socket-multiplatform/tree/master/server/server-socket/non-blocking (MIT)
+* Non blocking http server https://github.com/bertrandmartel/socket-multiplatform/tree/master/server/server-socket/non-blocking (MIT)
 
 * Json decoding encoding is managed by QJson http://qjson.sourceforge.net/ (LGPLv2)
 
@@ -128,19 +128,19 @@ https://www.openssl.org/docs/faq.html#PROG14
 
 * SSL cert dashboard
 
-![ssl cert dashboard](https://raw.github.com/akinaru/ssl-cert-dashboard/master/img/dashboard.png)
+![ssl cert dashboard](https://raw.github.com/bertrandmartel/ssl-cert-dashboard/master/img/dashboard.png)
 
 * SSL cert creation
 
-![ssl cert creation](https://raw.github.com/akinaru/ssl-cert-dashboard/master/img/createcert.png)
+![ssl cert creation](https://raw.github.com/bertrandmartel/ssl-cert-dashboard/master/img/createcert.png)
 
 * User dashboard
 
-![user dashboard](https://raw.github.com/akinaru/ssl-cert-dashboard/master/img/users.png)
+![user dashboard](https://raw.github.com/bertrandmartel/ssl-cert-dashboard/master/img/users.png)
 
 ##License
 
-[License MIT](https://github.com/akinaru/ssl-cert-dashboard/blob/master/LICENSE.md)
+[License MIT](https://github.com/bertrandmartel/ssl-cert-dashboard/blob/master/LICENSE.md)
 
 <hr/>
 

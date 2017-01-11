@@ -74,7 +74,7 @@ int main(int argc,char *argv[]){
     string privateCert = "";
     string caCerts = "";
     string privateKeyPass="";
-    string digestRealm = "akinaru_realm";
+    string digestRealm = "bertrandmartel_realm";
     string webpath="~/ssl-dashboard/web";
     string keyFile="~/ssl-dashboard/rand.txt";
     string algoStr = "MD5";
